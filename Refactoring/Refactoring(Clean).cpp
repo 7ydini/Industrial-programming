@@ -82,6 +82,7 @@ void main()
 
 	while (l < x1 || l < x2 || l < y1 || l < y2)
 		l *= 2;
+
 	int** Matrix3 = new int* [l];
 	initFillMatrix(Matrix3, l, l);
 	int** Matrix4 = new int* [l];
@@ -110,31 +111,25 @@ void main()
 	initMatrix(semiMatrix2, l / 2, l / 2);
 	copyMatrix(semiMatrix2, Matrix3, l / 2, l / 2, 0, l / 2);
 
-
 	int** semiMatrix3 = new int* [l / 2];
 	initMatrix(semiMatrix3, l / 2, l / 2);
 	copyMatrix(semiMatrix3, Matrix3, l / 2, l / 2, l / 2, 0);
-
 
 	int** semiMatrix4 = new int* [l / 2];
 	initMatrix(semiMatrix4, l / 2, l / 2);
 	copyMatrix(semiMatrix4, Matrix3, l / 2, l / 2, l / 2, l / 2);
 
-
 	int** semiMatrix5 = new int* [l / 2];
 	initMatrix(semiMatrix5, l / 2, l / 2);
 	copyMatrix(semiMatrix5, Matrix4, l / 2, l / 2, 0, 0);
-
 
 	int** semiMatrix6 = new int* [l / 2];
 	initMatrix(semiMatrix6, l / 2, l / 2);
 	copyMatrix(semiMatrix6, Matrix4, l / 2, l / 2, 0, l / 2);
 
-
 	int** semiMatrix7 = new int* [l / 2];
 	initMatrix(semiMatrix7, l / 2, l / 2);
 	copyMatrix(semiMatrix7, Matrix4, l / 2, l / 2, l / 2, 0);
-
 
 	int** semiMatrix8 = new int* [l / 2];
 	initMatrix(semiMatrix8, l / 2, l / 2);
@@ -295,7 +290,6 @@ void main()
 	copyMatrix(Matrix6, Matrix5, f, s, 0, 0);//Переносим действительные значения в 6 матрицу.
 
 
-
 	////Вывод результирующей матрицы////
 
 
@@ -357,8 +351,10 @@ void matrixRandFill(int** matrix, size_t x, size_t y) {//Метод для заполнение ма
 
 void matrixFill(int** matrix, size_t x, size_t y) {//Метод заполнения матрицы вручную.
 	for (int i = 0; i < x; i++)
-		for (int j = 0; j < y; j++)
+		for (int j = 0; j < y; j++) {
+			cout << "Введите значение Matrix[" << i << "][" << j << "]: ";
 			cin >> matrix[i][j];
+		}
 }
 
 
@@ -385,6 +381,8 @@ void copyMatrix(int** matrix1, int** matrix2, size_t x, size_t y, size_t k, size
 	{
 		for (int j = 0; j < y; j++)
 			matrix1[i][j] = matrix2[i + k][j + l];
+		
+			
 	}
 }
 
